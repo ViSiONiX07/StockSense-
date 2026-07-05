@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background is transparent -->
+  <!-- Stylized 'S' / Trend / Balance Mark -->
+  <path d="M60 140 C 60 140, 80 145, 100 100 C 120 55, 140 60, 140 60" stroke="#C1521A" stroke-width="12" fill="none" stroke-linecap="round" />
+  <path d="M60 60 C 60 60, 80 55, 100 100 C 120 145, 140 140, 140 140" stroke="#1F1B16" stroke-width="12" fill="none" stroke-linecap="round" />
+  <circle cx="100" cy="100" r="8" fill="#1F1B16" />
+</svg>

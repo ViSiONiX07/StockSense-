@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF6F0;
+    color: #1c1b1b;
+    font-family: 'Public Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+  }
+}
+
+@layer components {
+  .hairline {
+    border: 1px solid #E8DFD3;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-size: 24px;
+  }
+  .ledger-row:last-child {
+    border-bottom: none;
+  }
+}

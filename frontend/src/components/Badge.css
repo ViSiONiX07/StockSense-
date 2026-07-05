@@ -1,0 +1,27 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 0; /* solid square as per instructions */
+}
+
+/* Spice Tones */
+.badge-critical { color: var(--red-clay-on-container); }
+.badge-critical .badge-dot { background-color: var(--red-clay); }
+
+.badge-warning { color: var(--ochre); }
+.badge-warning .badge-dot { background-color: var(--ochre); }
+
+.badge-healthy { color: var(--sage); }
+.badge-healthy .badge-dot { background-color: var(--sage); }
+
+.badge-waste { color: var(--plum); }
+.badge-waste .badge-dot { background-color: var(--plum); }
+
+.badge-default { color: var(--stone); }
+.badge-default .badge-dot { background-color: var(--stone); }
