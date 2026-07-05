@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../context/LanguageContext';
 import UsageChart from '../components/UsageChart';
+import { API_URL } from '../config';
 
 export default function ItemDetail() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ export default function ItemDetail() {
   const { t, lang } = useTranslation();
 
   const fetchItemData = () => {
-    fetch(`http://localhost:3000/api/items/${id}`)
+    fetch(`${API_URL}/api/items/${id}`)
       .then(res => res.json())
       .then(data => {
         setItem(data.item || data); // handle wrapped response
@@ -50,7 +51,7 @@ export default function ItemDetail() {
 
   const confirmReorder = () => {
     // Call server to record order log in db
-    fetch('http://localhost:3000/api/orders', {
+    fetch(`${API_URL}/api/orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -85,7 +86,7 @@ export default function ItemDetail() {
 
   const handleSaveEdit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/api/items/${id}`, {
+    fetch(`${API_URL}/api/items/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

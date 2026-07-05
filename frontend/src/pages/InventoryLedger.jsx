@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../context/LanguageContext';
+import { API_URL } from '../config';
 
 export default function InventoryLedger() {
   const [items, setItems] = useState([]);
@@ -25,7 +26,7 @@ export default function InventoryLedger() {
   });
 
   const fetchItems = () => {
-    fetch('http://localhost:3000/api/items')
+    fetch(`${API_URL}/api/items`)
       .then(res => res.json())
       .then(data => {
         setItems(data);
@@ -39,7 +40,7 @@ export default function InventoryLedger() {
       ? { item_id: item.id, date: new Date().toISOString().split('T')[0], quantity_used: 1 }
       : { item_id: item.id, quantity: 1 };
 
-    fetch(`http://localhost:3000/api/${endpoint}`, {
+    fetch(`${API_URL}/api/${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
@@ -69,7 +70,7 @@ export default function InventoryLedger() {
       ? { item_id: quickLogItem.id, date: new Date().toISOString().split('T')[0], quantity_used: qty }
       : { item_id: quickLogItem.id, quantity: qty };
 
-    fetch(`http://localhost:3000/api/${endpoint}`, {
+    fetch(`${API_URL}/api/${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
@@ -87,7 +88,7 @@ export default function InventoryLedger() {
 
   const handleAddItem = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3000/api/items', {
+    fetch(`${API_URL}/api/items`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -80,3 +80,32 @@ StockSense/
 
 5. **Open the App:**
    Open your browser and navigate to `http://localhost:5173`.
+
+---
+
+## Deployment
+
+### Backend (Render.com)
+1. **Create Web Service:** Create a new Web Service on Render and connect your GitHub repository.
+2. **Configure Root Directory:** Set the root directory to `backend`.
+3. **Environment Variables:**
+   - `PORT`: Set to `3000` (or leave blank; Render dynamic assignment is supported).
+   - `FRONTEND_URL`: Set to your deployed Vercel URL (e.g. `https://stocksense.vercel.app`) to authorize CORS requests.
+4. **Build and Start Commands:**
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+5. **Database Storage:**
+   > [!NOTE]
+   > This project uses SQLite for storage. On Render's Free tier, the file system is ephemeral, meaning the database will reset to the seeded defaults when the service restarts or redeploys. For a hackathon demo, the backend includes auto-seeding logic: if the database file is reset or empty, it will auto-populate with the mock items and daily history logs immediately upon startup.
+
+### Frontend (Vercel.com)
+1. **Create Project:** Import the repository into Vercel.
+2. **Configure Directories & Settings:**
+   - Framework Preset: `Vite`
+   - Root Directory: `frontend`
+3. **Environment Variables:**
+   - `VITE_API_URL`: Set to your deployed Render URL (e.g. `https://stocksense-backend.onrender.com`).
+4. **Build and Output Settings:**
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+

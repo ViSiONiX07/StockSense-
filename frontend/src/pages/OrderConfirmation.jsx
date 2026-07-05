@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from '../context/LanguageContext';
+import { API_URL } from '../config';
 
 export default function OrderConfirmation() {
   const location = useLocation();
@@ -19,12 +20,12 @@ export default function OrderConfirmation() {
   const txnId = `TXN-${Math.floor(1000 + Math.random() * 9000)}-BM`;
 
   const handleReceiveOrder = (id) => {
-    fetch(`http://localhost:3000/api/orders/${id}/receive`, {
+    fetch(`${API_URL}/api/orders/${id}/receive`, {
       method: 'PUT'
     })
     .then(res => res.json())
     .then(() => {
-      fetch('http://localhost:3000/api/orders')
+      fetch(`${API_URL}/api/orders`)
         .then(res => res.json())
         .then(data => setOrders(data));
     })
@@ -32,7 +33,7 @@ export default function OrderConfirmation() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/orders')
+    fetch(`${API_URL}/api/orders`)
       .then(res => res.json())
       .then(data => {
         setOrders(data);

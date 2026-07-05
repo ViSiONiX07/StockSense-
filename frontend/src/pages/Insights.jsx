@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from '../context/LanguageContext';
+import { API_URL } from '../config';
 import { 
   ResponsiveContainer, 
   BarChart, 
@@ -23,8 +24,8 @@ export default function Insights() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:3000/api/items').then(res => res.json()),
-      fetch('http://localhost:3000/api/usage-history').then(res => res.json())
+      fetch(`${API_URL}/api/items`).then(res => res.json()),
+      fetch(`${API_URL}/api/usage-history`).then(res => res.json())
     ])
     .then(([itemsData, historyData]) => {
       setItems(itemsData);

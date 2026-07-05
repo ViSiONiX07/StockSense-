@@ -4,10 +4,24 @@ const db = require('./db');
 const { differenceInDays, subDays, format } = require('date-fns');
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*'
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
+
+// Auto-seed if database is empty
+try {
+  const itemCount = db.prepare("SELECT COUNT(*) AS count FROM items").get().count;
+  if (itemCount === 0) {
+    console.log("Database is empty. Auto-seeding default data...");
+    require('./seed');
+  }
+} catch (err) {
+  console.error("Failed to run database auto-seed check:", err);
+}
 
 const categoryPrices = {
   'Vegetables/Produce': 30, // average produce price/kg in INR

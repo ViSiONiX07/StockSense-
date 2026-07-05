@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../context/LanguageContext';
+import { API_URL } from '../config';
 
 export default function Dashboard() {
   const [items, setItems] = useState([]);
@@ -15,25 +16,25 @@ export default function Dashboard() {
   const { t, lang } = useTranslation();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/items')
+    fetch(`${API_URL}/api/items`)
       .then(res => res.json())
       .then(data => {
         setItems(data);
       });
 
-    fetch('http://localhost:3000/api/activity')
+    fetch(`${API_URL}/api/activity`)
       .then(res => res.json())
       .then(data => {
         setActivity(data);
       });
 
-    fetch('http://localhost:3000/api/orders')
+    fetch(`${API_URL}/api/orders`)
       .then(res => res.json())
       .then(data => {
         setOrders(data);
       });
 
-    fetch('http://localhost:3000/api/smart-recommendation')
+    fetch(`${API_URL}/api/smart-recommendation`)
       .then(res => res.json())
       .then(data => {
         setRecommendation(data);
@@ -69,7 +70,7 @@ export default function Dashboard() {
     if (!reorderItem) return;
     
     // Call server to record order log in db
-    fetch('http://localhost:3000/api/orders', {
+    fetch(`${API_URL}/api/orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
