@@ -79,7 +79,7 @@ StockSense/
    ```
 
 5. **Open the App:**
-   Open your browser and navigate to `http://localhost:5173`.
+   Open your browser and navigate to `https://stock-sense-lake-seven.vercel.app/`.
 
 ---
 
